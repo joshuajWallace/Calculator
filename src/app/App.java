@@ -40,8 +40,7 @@ public class App {
     				return;
     			}
 		    	else
-		    		return;
-		        	
+		    		return;	
 	        }
     	}
     	if(value == '=') {//perform math function
@@ -51,6 +50,9 @@ public class App {
 			clearDisplay();
 		}
 		else {//record numbers pushed
+			if(inputCounter == 0 && operation == ' ') {
+				clearDisplay();
+			}
 			display[inputCounter]  = value;
 			inputCounter++;
 			screen.append(String.valueOf(value));

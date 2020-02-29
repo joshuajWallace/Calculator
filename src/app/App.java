@@ -51,16 +51,13 @@ public class App {
 		}
 		else {//record numbers pushed
 			if(inputCounter == 0 && operation == ' ') {
-				clearDisplay();
+				screen.append("\n");
 			}
 			display[inputCounter]  = value;
 			inputCounter++;
 			screen.append(String.valueOf(value));
 			inputNumber = Double.valueOf(String.copyValueOf(display));
 		}
-    }
-    public static void updateDisplay() {
-    	screen.setText(String.copyValueOf(display));
     }
 	public static void memoryNumber(char value) {
 		// TODO Auto-generated method stub

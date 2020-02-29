@@ -1,5 +1,6 @@
 package app;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
 
@@ -13,18 +14,26 @@ public class Numbers extends JPanel {
 
 	public Numbers() {
 		for(int i = 1; i <10; i++) {
+			if(i == 4)
+				add(new calButton('+'));
+			if(i == 7)	
+				add(new calButton('-'));		
 			add(new calButton(Character.forDigit(i, 10)));
 		}
+		Dimension two = new Dimension(106, 50);
 		calButton zero = new calButton('0');
-		zero.setSize(100, 50);
+		zero.setPreferredSize(two);
+		add(new calButton('*'));
 		add(zero);
 		add(new calButton('.'));
-		add(new calButton('-'));
-		add(new calButton('+'));
-		add(new calButton('*'));
-		add(new calButton('/')); 	
-		add(new calButton('='));
-		setLayout(new GridLayout(4,3));
-		setSize(150, 200);
+		add(new calButton('/'));
+		calButton c = new calButton('c');
+		calButton equals = new calButton('=');
+		c.setPreferredSize(two);
+		equals.setPreferredSize(two);
+		add(c);
+		add(equals);
+		//setLayout(new GridLayout(5,4));
+		setPreferredSize(new Dimension(250, 300));
 	}
 }

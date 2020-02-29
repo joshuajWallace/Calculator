@@ -1,9 +1,8 @@
 package app;
 import javax.swing.*;
-
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.*;
-import java.awt.font.TextLayout;
+
 
 public class calButton extends JButton{
 	/**
@@ -16,29 +15,16 @@ public class calButton extends JButton{
 		this.value = value;
 		this.setText(Character.toString(value));		
 		this.addActionListener(new NumberListener());
-		setSize(50, 50);
+		setPreferredSize(new Dimension(50 , 50));
+		setMaximumSize(new Dimension(50 , 50));
+		
+		
 		setBorder(BorderFactory.createEtchedBorder(getForeground(), getBackground()));
-	}
-	public String toString() {
-		return Character.toString(value);
 	}
 	public class NumberListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event) {
-			if(App.inMemory()) {
-				Display.setDisplay(Double.toString((App.getMemory()*Display.getDisplay())));
+				App.pressButton(value);			
 			}
-			switch(value) {
-			case '*':
-				App.setMemory(Display.getDisplay());
-				App.updateMemory(true);
-				
-				
-			
-			default: Display.setDisplay(Character.toString(value));
-			break;
-			}
-		}
-	}
-
+	}				
 }

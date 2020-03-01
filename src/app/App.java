@@ -107,5 +107,6 @@ public class App {
 		inputCounter = 0;
 		display = new char[20];
 		inputNumber = 0;
+		memoryNumber = 0;
 	}
 }

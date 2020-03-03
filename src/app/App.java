@@ -1,5 +1,7 @@
 package app;
 import java.awt.*;
+import java.awt.event.KeyListener;
+
 import javax.swing.*;
 
 public class App {
@@ -16,16 +18,21 @@ public class App {
     	frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
     	frame.add(screen);
     	frame.add(num);
+    	frame.addKeyListener(new CalListener());
     	frame.pack();
     	frame.setBackground(Color.DARK_GRAY);
     	frame.setVisible(true);
     	frame.setPreferredSize(new Dimension(400, 200));
     	frame.setMaximumSize(new Dimension(400, 200));
     	frame.setResizable(false);
+    	frame.setFocusable(true);
     	
     }
     public static void pressButton(char value) {
     	char[] operators = {'-', '+' , '*', '/'};
+    	if(inputCounter != 0 && display[inputCounter - 1] == '.' && value == '.') {
+    		return;
+    	}
     	for(char test : operators) {
     		if(value == test) {
     			if(operation == ' ' && inputNumber != 0){
@@ -52,6 +59,19 @@ public class App {
 		else {//record numbers pushed
 			if(inputCounter == 0 && operation == ' ') {
 				screen.append("\n");
+			}
+			if(value == '.') {
+				if(inputCounter == 0) {
+					display[inputCounter]  = value;
+					inputCounter++;
+					screen.append(String.valueOf(value));
+					inputNumber = 0;
+					return;
+				}
+				for(char test : display) {
+					if(test == '.')
+						return;
+				}
 			}
 			display[inputCounter]  = value;
 			inputCounter++;

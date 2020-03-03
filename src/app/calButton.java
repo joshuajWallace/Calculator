@@ -25,6 +25,6 @@ public class calButton extends JButton{
 		
 		public void actionPerformed(ActionEvent event) {
 				App.pressButton(value);			
-			}
-	}				
+			}			
+	}
 }
